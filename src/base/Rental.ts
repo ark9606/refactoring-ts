@@ -1,9 +1,6 @@
 import { Movie } from './Movie';
 
 export class Rental {
-  // private readonly movie: Movie;
-  // private readonly daysRented: number;
-
   constructor(
     private readonly movie: Movie,
     private readonly daysRented: number,
