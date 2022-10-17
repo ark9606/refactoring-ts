@@ -17,17 +17,7 @@ export class Customer {
     let result = `Rental record for ${this.getName()}\n`;
     this.rentals.forEach((rental) => {
       let thisAmount = rental.getCharge();
-      // add frequent renter points
-      frequentRenterPoints++;
-
-      // add bonus for two days of new release rental
-      if (
-        rental.getMovie().getPriceCode() === Movie.NEW_RELEASE &&
-        rental.getDaysRented() > 1
-      ) {
-        frequentRenterPoints++;
-      }
-
+      frequentRenterPoints += rental.getFrequentRenterPointsIncrement();
       // add info about rental to the statement
       result += `\t${rental.getMovie().getTitle()}\t${thisAmount}\n`;
       totalAmount += thisAmount;
@@ -38,6 +28,4 @@ export class Customer {
 
     return result;
   }
-
-
 }

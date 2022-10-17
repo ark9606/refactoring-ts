@@ -39,4 +39,18 @@ export class Rental {
     }
     return charge;
   }
+
+  public getFrequentRenterPointsIncrement(): number {
+    // add frequent renter points
+    let frequentRenterPoints = 1;
+
+    // add bonus for two days of new release rental
+    if (
+        this.getMovie().getPriceCode() === Movie.NEW_RELEASE &&
+        this.getDaysRented() > 1
+    ) {
+      frequentRenterPoints++;
+    }
+    return frequentRenterPoints;
+  }
 }
